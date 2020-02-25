@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Reto Uno</string>
+    <string name="nombre">Nombres</string>
+    <string name="apellido">Apellidos</string>
+    <string name="Ingreso_informacion">Ingresar información</string>
+    <string name="Fecha">Fecha de nacimiento</string>
+    <string name="FECHA">FECHA</string>
+    <string name="ACEPTAR">ACEPTAR</string>
+    <string name="requerido">El valor es requerido</string>
+    <string name="Bienvenido">Bienvenido</string>
+    <string name="Eres_mayor">Tienes la mayoría de edad</string>
+</resources>
