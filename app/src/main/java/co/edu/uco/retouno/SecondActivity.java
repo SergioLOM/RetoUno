@@ -18,7 +18,7 @@ public class SecondActivity extends AppCompatActivity {
         PersonaDTO personaDTO = (PersonaDTO) getIntent().getParcelableExtra("persona");
         txtNombre.setText(personaDTO.getNombre());
         txtApellido.setText(personaDTO.getApellido());
-        txtEdad.setText(personaDTO.getEdad());
+        txtEdad.setText(String.valueOf(personaDTO.getEdad()));
 
     }
 

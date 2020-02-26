@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         age--;
                     }
                 }
-                txtEdad.setText(age);
+                txtEdad.setText(String.valueOf(age));
             }
         });
 
@@ -75,13 +75,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 goToSecondView();
-                Intent intent = new Intent (getApplicationContext(),SecondActivity.class);
-                intent.putExtra("persona", personaDTO);
-                startActivity(intent);
+                if(personaDTO.getEdad()>18){
+                    Intent intent = new Intent (getApplicationContext(),SecondActivity.class);
+                    intent.putExtra("persona", personaDTO);
+                    startActivity(intent);
+
+                }else {
+                    Toast.makeText(getApplicationContext(), "Eres menor de edad", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
-
     }
 
     private void initComponents() {
@@ -107,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
         else if ("".equals(apellido)){
             txtApellido.setError(getString(R.string.requerido));
         }
-        else if ("".equals(fecha) || age2<18){
+        else if ("".equals(fecha)  /*age2<18*/){
             txtFecha.setError(getString(R.string.requerido));
-            Toast.makeText(getApplicationContext(), "Eres menor de 18 años o debes ingresar la fecha", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "Eres menor de 18 años o debes ingresar la fecha", Toast.LENGTH_SHORT).show();
         }
         else{
             personaDTO.setNombre(nombre);
