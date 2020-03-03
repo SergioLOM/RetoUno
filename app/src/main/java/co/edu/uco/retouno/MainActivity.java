@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
 
 import co.edu.uco.retouno.DTO.PersonaDTO;
 
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                         getAge ( dayOfMonth,  month,  year);
                     }
                 }, birthDay, birthMonth, birthYear);
+                datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
                 datePickerDialog.show();
             }
 
@@ -102,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         String nombre = txtNombre.getText().toString();
         String apellido = txtApellido.getText().toString();
         String age = txtEdad.getText().toString();
-        int age2 = Integer.parseInt(age);
 
         if("".equals(nombre)){
             txtNombre.setError(getString(R.string.requerido));
@@ -110,14 +111,16 @@ public class MainActivity extends AppCompatActivity {
         else if ("".equals(apellido)){
             txtApellido.setError(getString(R.string.requerido));
         }
-        else if ("".equals(fecha)  /*age2<18*/){
+        else if ("".equals(fecha) || fecha == null){
             txtFecha.setError(getString(R.string.requerido));
-            //Toast.makeText(getApplicationContext(), "Eres menor de 18 años o debes ingresar la fecha", Toast.LENGTH_SHORT).show();
+        }
+        else if (age == null){
+            Toast.makeText(getApplicationContext(), "Seleccione su fecha de nacimiento", Toast.LENGTH_SHORT).show();
         }
         else{
             personaDTO.setNombre(nombre);
             personaDTO.setApellido(apellido);
-            personaDTO.setEdad(age2);
+            personaDTO.setEdad(Integer.parseInt(age));
         }
     }
 }
